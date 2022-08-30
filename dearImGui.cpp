@@ -43,9 +43,39 @@ void DIG::renderImGui()
     ImGui::NewFrame();
 
     // Menu
-    ImGui::Begin("ExOverlay");
+    ImGui::Begin("ULTRAKILL Cheats - marcoigorr", &option->bMenu, 0);
     {
-        AddCheckBox("God Mode", &option->bGodMode);
+        if (ImGui::BeginTabBar("tabs"))
+        {
+            if (ImGui::BeginTabItem("Health"))
+            {
+                AddCheckBox("God Mode", &option->bGodMode);
+
+                ImGui::EndTabItem();
+            }
+
+            if (ImGui::BeginTabItem("Movement"))
+            {
+                AddCheckBox("InfiniteDash", &option->bInfiniteDash);
+
+                AddCheckBox("SpeedHack", &option->bSpeedHack);
+                if (option->bSpeedHack)
+                {
+                    AddSlider<float>("walkSpeed", &value->walkSpeed, 750.f, 2000.f);
+                }
+
+                AddCheckBox("BunnyJump", &option->bBunnyJump);
+                if (option->bBunnyJump)
+                {
+                    AddSlider<float>("jumpPower", &value->jumpPower, 90.f, 200.f);
+                    AddSlider<float>("wallJumpPower", &value->wallJumpPower, 150.f, 400.f);                       
+                }  
+
+                ImGui::EndTabItem();
+            }
+
+            ImGui::EndTabBar();
+        }
     }
     ImGui::End();
 

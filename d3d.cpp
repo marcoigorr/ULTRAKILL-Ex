@@ -49,8 +49,10 @@ void Direct3D::renderFrame(void)
     d3ddev->BeginScene();
 
     /* 3D rendering on the back buffer here */
-
-    drawText((char*)"ExOverlay - marcoigorr", 110, window->SCREEN_HEIGHT - 100, 255, 255, 255, 255);
+    if (option->isGameRunning)
+        drawText((char*)"ULTRAKILL Cheats - marcoigorr", 120, window->SCREEN_HEIGHT - 60, 255, 255, 255, 255);
+    else
+        drawText((char*)"ULTRAKILL process not found! Close the cheats with END", 120, window->SCREEN_HEIGHT - 60, 255, 255, 255, 255);
 
     // End d3d scene
     d3ddev->EndScene();

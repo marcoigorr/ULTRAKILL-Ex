@@ -49,6 +49,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
         addr->unityPlayer = proc->GetModuleBase(L"UnityPlayer.dll", proc->procId);
     }
+    else
+    {
+        option->isGameRunning = false;
+    }
 
     // Fullscreen transparent window creation
     window->CreateWnd(hInstance);
@@ -91,6 +95,37 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         {
             if (addr->hp) 
                 mem->writeMem<int>(hProcess, addr->hp, 420);
+        }
+        // -- Infinite Dash
+        if (option->bInfiniteDash)
+            if (addr->boostCharge)
+                mem->writeMem<float>(hProcess, addr->boostCharge, 300);
+        // -- Speed Hack
+        if (option->bSpeedHack)
+        { 
+            if (addr->walkSpeed)
+                mem->writeMem<float>(hProcess, addr->walkSpeed, value->walkSpeed);
+        }
+        else {
+            if (addr->walkSpeed)
+                mem->writeMem<float>(hProcess, addr->walkSpeed, 750.f);
+        }
+
+        // -- Bunny Jump
+        if (option->bBunnyJump)
+        {
+            if (addr->jumpPower && addr->wallJumpPower)
+            {
+                mem->writeMem<float>(hProcess, addr->jumpPower, value->jumpPower);
+                mem->writeMem<float>(hProcess, addr->wallJumpPower, value->wallJumpPower);
+            }
+        }
+        else {
+            if (addr->jumpPower && addr->wallJumpPower)
+            {
+                mem->writeMem<float>(hProcess, addr->jumpPower, 90.f);
+                mem->writeMem<float>(hProcess, addr->wallJumpPower, 150.f);
+            }  
         }
     }
 
