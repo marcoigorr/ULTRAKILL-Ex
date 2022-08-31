@@ -68,7 +68,9 @@ void DIG::renderImGui()
                 if (option->bBunnyJump)
                 {
                     AddSlider<float>("jumpPower", &value->jumpPower, 90.f, 200.f);
-                    AddSlider<float>("wallJumpPower", &value->wallJumpPower, 150.f, 400.f);                       
+                    AddSlider<float>("wallJumpPower", &value->wallJumpPower, 150.f, 400.f);   
+
+                    AddCheckBox("InfiniteWallJumps", &option->bInfiniteWallJumps);
                 }  
 
                 ImGui::EndTabItem();

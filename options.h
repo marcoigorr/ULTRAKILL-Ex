@@ -9,7 +9,7 @@ public:
 	bool bMenu = true;
 
 	// Cheats
-	bool bGodMode = false, bSpeedHack = false, bBunnyJump = false, bInfiniteDash = false;
+	bool bGodMode = false, bSpeedHack = false, bBunnyJump = false, bInfiniteWallJumps = false, bInfiniteDash = false;
 };
 
 class values

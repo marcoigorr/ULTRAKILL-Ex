@@ -13,6 +13,7 @@ void Address::calcAddresses()
 	airAcceleration =	mem->FindDMAAddyEx(proc->hProcess, localPlayer, offset->airAcceleration);
 	wallJumpPower =		mem->FindDMAAddyEx(proc->hProcess, localPlayer, offset->wallJumpPower);
 	timeBetweenSteps =	mem->FindDMAAddyEx(proc->hProcess, localPlayer, offset->timeBetweenSteps);
+	currWallJumps =		mem->FindDMAAddyEx(proc->hProcess, localPlayer, offset->currWallJumps);
 	hp =				mem->FindDMAAddyEx(proc->hProcess, localPlayer, offset->hp);
 	walking =			mem->FindDMAAddyEx(proc->hProcess, localPlayer, offset->walking);
 	boostCharge =		mem->FindDMAAddyEx(proc->hProcess, localPlayer, offset->boostCharge);
